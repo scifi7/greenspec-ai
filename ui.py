@@ -27,9 +27,9 @@ footer { visibility: hidden; }
 
 /* Header band */
 .gs-hero { background: var(--forest); border-radius: 18px; padding: 2rem 2rem 1.8rem; margin-bottom: 1.4rem; }
-.gs-hero-title { font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 700;
+.stApp .gs-hero-title { font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 700;
   font-size: 2.7rem; line-height: 1.05; letter-spacing: -0.02em; color: #EAF4E6; margin: 0; }
-.gs-hero-sub { color: #B9D3BE; margin-top: .7rem; font-size: 1.05rem; max-width: 34rem; line-height: 1.45; }
+.stApp .gs-hero-sub { color: #B9D3BE; margin-top: .7rem; font-size: 1.05rem; max-width: 34rem; line-height: 1.45; }
 
 /* Form */
 [data-testid="stForm"] { background: #FFFFFF; border: 1px solid var(--line); border-radius: 14px; padding: 1.4rem; }
@@ -40,7 +40,7 @@ footer { visibility: hidden; }
 [data-testid="stFormSubmitButton"] button:focus-visible { outline: 3px solid var(--moss); outline-offset: 2px; }
 
 /* Section headings */
-.gs-sec { font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 600; font-size: 1.45rem;
+.stApp .gs-sec { font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 600; font-size: 1.45rem;
   color: var(--forest); margin: 2.2rem 0 .8rem; padding-bottom: .4rem; border-bottom: 1px solid var(--line); }
 
 /* Scorecard */
@@ -53,8 +53,8 @@ footer { visibility: hidden; }
 .gs-ring-num { font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 700; font-size: 3rem; line-height: 1; color: var(--forest); }
 .gs-ring-den { font-size: .8rem; color: #4D6A57; margin-top: .2rem; }
 .gs-side { flex: 1 1 260px; min-width: 240px; }
-.gs-prod { font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 600; font-size: 1.35rem; color: var(--forest); margin: 0; }
-.gs-meta { color: #4D6A57; font-size: .92rem; margin: .2rem 0 .8rem; }
+.stApp .gs-prod { font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 600; font-size: 1.35rem; color: var(--forest); margin: 0; }
+.stApp .gs-meta { color: #4D6A57; font-size: .92rem; margin: .2rem 0 .8rem; }
 .gs-badge { display: inline-block; font-weight: 600; font-size: .9rem; padding: .2rem .8rem; border-radius: 999px; margin-bottom: 1rem; }
 .gs-good { background: #DCEFE0; color: #1F5C37; }
 .gs-moderate { background: #F6EBC8; color: #6B4E0E; }
@@ -65,7 +65,7 @@ footer { visibility: hidden; }
 .gs-bar-top { display: flex; justify-content: space-between; font-size: .92rem; font-weight: 500; margin-bottom: .3rem; }
 .gs-track { height: 12px; background: var(--sage); border-radius: 6px; overflow: hidden; }
 .gs-fill { height: 100%; background: var(--fern); border-radius: 6px; }
-.gs-note { color: #4D6A57; font-size: .85rem; margin-top: .8rem; }
+.stApp .gs-note { color: #4D6A57; font-size: .85rem; margin-top: .8rem; }
 
 /* Bordered containers (AI suggestions, regulations) */
 [data-testid="stVerticalBlockBorderWrapper"] { border-color: var(--line) !important; border-radius: 14px !important; background: #FFFFFF; }
@@ -79,9 +79,9 @@ footer { visibility: hidden; }
 def hero_html():
     return (
         '<div class="gs-hero">'
-        '<p class="gs-hero-title">GreenSpec AI</p>'
-        '<p class="gs-hero-sub">Check how sustainable your product\'s material is, '
-        "and find a greener way to make it.</p>"
+        '<div class="gs-hero-title">GreenSpec AI</div>'
+        '<div class="gs-hero-sub">Check how sustainable your product\'s material is, '
+        "and find a greener way to make it.</div>"
         "</div>"
     )
 
@@ -116,12 +116,12 @@ def scorecard_html(product, material, process, country, score, rating, bars):
         f'<div class="gs-ring-inner"><span class="gs-ring-num">{score:g}</span>'
         '<span class="gs-ring-den">out of 100</span></div></div>'
         '<div class="gs-side">'
-        f'<p class="gs-prod">{html.escape(product)}</p>'
-        f'<p class="gs-meta">Material: {html.escape(material)}. '
-        f"Process: {html.escape(process)}. Market: {html.escape(country)}.</p>"
+        f'<div class="gs-prod">{html.escape(product)}</div>'
+        f'<div class="gs-meta">Material: {html.escape(material)}. '
+        f"Process: {html.escape(process)}. Market: {html.escape(country)}.</div>"
         f'<span class="gs-badge {_rating_class(rating)}">{html.escape(rating)}</span>'
         f"{bar_html}"
-        '<p class="gs-note">Scores are per 1 kg of material, from approximate typical values. '
-        "Higher is always better.</p>"
+        '<div class="gs-note">Scores are per 1 kg of material, from approximate typical values. '
+        "Higher is always better.</div>"
         "</div></div>"
     )
