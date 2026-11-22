@@ -85,15 +85,28 @@ Country sold in: {country}
 Current sustainability score: {score}/100 (higher is better)
 
 Suggest exactly two greener alternative materials or processes for this specific product.
-For each one:
-1. Name it.
-2. Explain in plain English why it is greener (carbon, recyclability, energy use).
-3. Be honest about practical trade-offs for this product (strength, cost, durability, how it is made).
-
 Only suggest options that are realistic for this product. If the current material is already
 one of the best choices, say so and suggest the most sensible small improvements instead.
 Where it makes sense, prefer materials from this list: {', '.join(other_materials)}.
-Keep the whole answer under 200 words, with no headings."""
+
+Write for a busy reader. Use short sentences and plain English. Use exactly this layout,
+with a blank line between every part, and put a line containing only --- between the two options:
+
+**1. Name of the first option**
+
+**Why it is greener:** one or two short sentences covering carbon, recyclability or energy use.
+
+**Trade-offs:** one or two short sentences on strength, cost, durability or how it is made.
+
+---
+
+**2. Name of the second option**
+
+**Why it is greener:** ...
+
+**Trade-offs:** ...
+
+Keep the whole answer under 170 words. No other headings or introduction."""
 
     message = client.messages.create(
         model=MODEL,
