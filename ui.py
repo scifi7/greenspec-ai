@@ -77,11 +77,19 @@ footer { visibility: hidden; }
 
 
 def hero_html():
+    # Inline styles on purpose: they cannot be overridden by Streamlit's own stylesheet.
+    title_style = (
+        "font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:700;"
+        "font-size:2.7rem;line-height:1.05;letter-spacing:-0.02em;color:#EAF4E6;margin:0;"
+    )
+    sub_style = (
+        "color:#B9D3BE;margin-top:.7rem;font-size:1.05rem;line-height:1.45;max-width:34rem;"
+    )
     return (
         '<div class="gs-hero">'
-        '<div class="gs-hero-title">GreenSpec AI</div>'
-        '<div class="gs-hero-sub">Check how sustainable your product\'s material is, '
-        "and find a greener way to make it.</div>"
+        f'<div class="gs-hero-title" style="{title_style}">GreenSpec AI</div>'
+        f'<div class="gs-hero-sub" style="{sub_style}">Check how sustainable your '
+        "product's material is, and find a greener way to make it.</div>"
         "</div>"
     )
 
